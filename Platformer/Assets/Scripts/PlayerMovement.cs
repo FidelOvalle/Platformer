@@ -13,7 +13,23 @@ public class PlayerMovement : MonoBehaviour
 
     Rigidbody2D rb;
 
+    public static PlayerMovement instance;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     //  public Transform startPos
+
     // Start is called before the first frame update
     void Start()
     {
